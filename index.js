@@ -20,10 +20,15 @@ app.use(cookieParser());
 app.use("/auth", UserRouter);
 
 async function dbconnect() {
-  await mongoose.connect("mongodb://127.0.0.1:27017/authentication");
+  await mongoose.connect(
+    "mongodb+srv://preethamvenkatram:Preeth0987123@podify1.t5nxief.mongodb.net/",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  );
   console.log("db connection successful");
 }
-
 app.listen(process.env.PORT, () => {
   console.log("Server is running in ", process.env.PORT);
   dbconnect();
